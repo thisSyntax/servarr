@@ -3,7 +3,26 @@
 This is my current [Arr Stack](https://wiki.servarr.com/) setup
 
 ## .env
-The .env file contains the the configuration options for PUID and PGID for the Arr apps as well as the VPN configuration variable for Gluetun, I use ProtonVPN at the moment  so the information below is what used based on the [Gluetun wiki](https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/protonvpn.md)
+The .env file should contain the configuration options for timezone, PUID, and PGID for the Arr apps as well as the VPN configuration variable for Gluetun, I use ProtonVPN at the moment  so the information below is what used based on the [Gluetun wiki](https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/protonvpn.md)
+
+```sh
+# General UID/GIU and Timezone
+TZ=America/New_York
+PUID=1000
+PGID=1000
+
+# Required environment variables for gluetun
+VPN_SERVICE_PROVIDER=protonvpn
+
+# Required environment variables for Wireguard
+VPN_TYPE=wireguard
+WIREGUARD_PRIVATE_KEY=[[WIREGUARD_PRIVATE_KEY]]
+WIREGUARD_ADDRESSES=[[WIREGUARD_ADDRESSES]]
+SERVER_COUNTRIES=United States
+
+# Heath check duration
+HEALTH_VPN_DURATION_INITIAL=120s
+```
 
 ## Required environment variables
 
