@@ -110,7 +110,7 @@ services:
     
   lidarr:
     container_name: lidarr
-    image: lscr.io/linuxserver/lidarr:latest
+    image: lscr.io/linuxserver/lidarr:nightly
     ports:
       - "8686:8686"
     networks:
@@ -130,11 +130,11 @@ services:
       - homepage.name=Lidarr
       - homepage.id=col-medium__lidarr
       - homepage.icon=lidarr
-      - homepage.href=${SERVARR_IP}:8686
+      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:8686
       - homepage.weight=2
       - homepage.widget.type=lidarr
-      - homepage.widget.url=${SERVARR_IP}:8686
-      - homepage.widget.key=${LIDARR_API_KEY}
+      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:8686
+      - homepage.widget.key={{HOMEPAGE_VAR_LIDARR_API_KEY}}
       
   bazarr:
     container_name: bazarr
