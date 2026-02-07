@@ -74,10 +74,10 @@ services:
       - homepage.name=Radarr
       - homepage.id=col-medium__radarr
       - homepage.icon=radarr
-      - homepage.href=${RADARR_IP_URL}
+      - homepage.href=${SERVARR_IP}:7878
       - homepage.weight=0
       - homepage.widget.type=radarr
-      - homepage.widget.url=${RADARR_IP_URL}
+      - homepage.widget.url=${SERVARR_IP}:7878
       - homepage.widget.key=${RADARR_API_KEY}
     
   sonarr:
@@ -102,10 +102,10 @@ services:
       - homepage.name=Sonarr
       - homepage.id=col-medium__sonarr
       - homepage.icon=sonarr
-      - homepage.href=${SONARR_IP_URL}
+      - homepage.href=${SERVARR_IP}:8989
       - homepage.weight=1
       - homepage.widget.type=sonarr
-      - homepage.widget.url=${SONARR_IP_URL}
+      - homepage.widget.url=${SERVARR_IP}:8989
       - homepage.widget.key=${SONARR_API_KEY}
     
   lidarr:
@@ -130,10 +130,10 @@ services:
       - homepage.name=Lidarr
       - homepage.id=col-medium__lidarr
       - homepage.icon=lidarr
-      - homepage.href=${LIDARR_IP_URL}
+      - homepage.href=${SERVARR_IP}:8686
       - homepage.weight=2
       - homepage.widget.type=lidarr
-      - homepage.widget.url=${LIDARR_IP_URL}
+      - homepage.widget.url=${SERVARR_IP}:8686
       - homepage.widget.key=${LIDARR_API_KEY}
       
   bazarr:
@@ -158,10 +158,10 @@ services:
       - homepage.name=Bazarr
       - homepage.id=col-medium__bazarr
       - homepage.icon=bazarr
-      - homepage.href=${BAZARR_IP_URL}
+      - homepage.href=${SERVARR_IP}:6767
       - homepage.weight=3
       - homepage.widget.type=bazarr
-      - homepage.widget.url=${BAZARR_IP_URL}
+      - homepage.widget.url=${SERVARR_IP}:6767
       - homepage.widget.key=${BAZARR_API_KEY}
 
   whisparr:
