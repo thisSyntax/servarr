@@ -78,7 +78,7 @@ services:
       - homepage.weight=0
       - homepage.widget.type=radarr
       - homepage.widget.url=http://radarr.local:7878/
-      - homepage.widget.key={RADARR_API_KEY}
+      - homepage.widget.key=${RADARR_API_KEY}
       - homepage.widget.fields=["wanted","missing"]
     
   sonarr:
