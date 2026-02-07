@@ -20,7 +20,7 @@ services:
       servarr_default:
         ipv4_address: 172.39.0.2
     volumes:
-      - /etc/docker/servarr/gluetun:/config
+      - /opt/docker/servarr/gluetun:/config
     env_file:
       - .env
     environment:
@@ -42,7 +42,7 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/docker/servarr/jellyseerr:/app/config
+      - /opt/docker/servarr/jellyseerr:/app/config
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
       start_period: 20s
@@ -66,7 +66,7 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/docker/servarr/radarr:/config
+      - /opt/docker/servarr/radarr:/config
       - /data:/data
     restart: unless-stopped
     labels:
@@ -95,7 +95,7 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/docker/servarr/sonarr:/config
+      - /opt/docker/servarr/sonarr:/config
       - /data:/data
     restart: unless-stopped
     
@@ -113,7 +113,7 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/docker/servarr/lidarr:/config
+      - /opt/docker/servarr/lidarr:/config
       - /data:/data
     restart: unless-stopped
   
@@ -131,7 +131,7 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/docker/servarr/whisparr:/config
+      - /opt/docker/servarr/whisparr:/config
       - /data:/data
     restart: unless-stopped
       
@@ -149,7 +149,7 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/docker/servarr/bazarr:/config
+      - /opt/docker/servarr/bazarr:/config
       - /data:/data
     restart: unless-stopped
 
@@ -162,7 +162,7 @@ services:
       servarr_default:
         ipv4_address: 172.39.0.9
     volumes:
-      - /etc/docker/servarr/notifiarr:/config
+      - /opt/docker/servarr/notifiarr:/config
       - /var/run/utmp:/var/run/utmp
       - /etc/machine-id:/etc/machine-id
     restart: unless-stopped
@@ -184,7 +184,7 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/docker/servarr/syncthing:/config
+      - /opt/docker/servarr/syncthing:/config
       - /data:/data
     restart: unless-stopped
 
@@ -197,7 +197,7 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/docker/servarr/prowlarr:/config
+      - /opt/docker/servarr/prowlarr:/config
     depends_on:
       gluetun:
         condition: service_healthy
@@ -214,7 +214,7 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/docker/servarr/sabnzbd:/config
+      - /opt/docker/servarr/sabnzbd:/config
       - /data:/data
     depends_on:
       gluetun:
