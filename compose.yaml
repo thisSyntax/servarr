@@ -74,11 +74,11 @@ services:
       - homepage.name=Radarr
       - homepage.id=col-medium__radarr
       - homepage.icon=radarr
-      - homepage.href=${SERVARR_IP}:7878
+      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:7878
       - homepage.weight=0
       - homepage.widget.type=radarr
-      - homepage.widget.url=${SERVARR_IP}:7878
-      - homepage.widget.key=${RADARR_API_KEY}
+      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:7878
+      - homepage.widget.key={{HOMEPAGE_VAR_RADARR_API_KEY}}
     
   sonarr:
     container_name: sonarr
@@ -102,11 +102,11 @@ services:
       - homepage.name=Sonarr
       - homepage.id=col-medium__sonarr
       - homepage.icon=sonarr
-      - homepage.href=${SERVARR_IP}:8989
+      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:8989
       - homepage.weight=1
       - homepage.widget.type=sonarr
-      - homepage.widget.url=${SERVARR_IP}:8989
-      - homepage.widget.key=${SONARR_API_KEY}
+      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:8989
+      - homepage.widget.key={{HOMEPAGE_VAR_SONARR_API_KEY}}
     
   lidarr:
     container_name: lidarr
@@ -158,11 +158,11 @@ services:
       - homepage.name=Bazarr
       - homepage.id=col-medium__bazarr
       - homepage.icon=bazarr
-      - homepage.href=${SERVARR_IP}:6767
+      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:6767
       - homepage.weight=3
       - homepage.widget.type=bazarr
-      - homepage.widget.url=${SERVARR_IP}:6767
-      - homepage.widget.key=${BAZARR_API_KEY}
+      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:6767
+      - homepage.widget.key={{HOMEPAGE_VAR_BAZARR_API_KEY}}
 
   whisparr:
     container_name: whisparr
