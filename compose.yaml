@@ -50,6 +50,16 @@ services:
       interval: 15s
       retries: 3
     restart: unless-stopped
+    labels:
+      - homepage.group=Main
+      - homepage.name=Jellyseerr
+      - homepage.id=col-1-2__jellyseerr
+      - homepage.icon=jellyseerr
+      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:5055
+      - homepage.weight=4
+      - homepage.widget.type=jellyseerr
+      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:5055
+      - homepage.widget.key={{HOMEPAGE_VAR_JELLYSEERR_API_KEY}}
     
   
   radarr:
