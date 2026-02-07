@@ -9,7 +9,6 @@ services:
   gluetun:
     container_name: gluetun
     image: qmcgaw/gluetun
-    restart: unless-stopped
     cap_add:
       - NET_ADMIN
     devices:
@@ -21,16 +20,16 @@ services:
       servarr_default:
         ipv4_address: 172.39.0.2
     volumes:
-      - /etc/servarr/gluetun:/config
+      - /data/configs/gluetun:/config
     env_file:
       - .env
     environment:
       - DNS_ADDRESS=127.0.0.11
+    restart: unless-stopped
 
   jellyseerr:
     container_name: jellyseerr
     image: ghcr.io/fallenbagel/jellyseerr:latest
-    restart: unless-stopped
     init: true
     ports:
       - 5055:5055
@@ -43,19 +42,19 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/servarr/jellyseerr:/app/config
+      - /data/configs/jellyseerr:/app/config
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
       start_period: 20s
       timeout: 3s
       interval: 15s
       retries: 3
+    restart: unless-stopped
     
   
   radarr:
     container_name: radarr
     image: lscr.io/linuxserver/radarr:latest
-    restart: unless-stopped
     ports:
       - "7878:7878"
     networks:
@@ -67,13 +66,20 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/servarr/radarr:/config
+      - /data/configs/radarr:/config
       - /data:/data
+    restart: unless-stopped
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Radarr
+      - homepage.id=col-medium__radarr
+      - homepage.icon=radarr
+      - homepage.href=http://radarr.local:7878/
+      - homepage.weight=0
     
   sonarr:
     container_name: sonarr
     image: lscr.io/linuxserver/sonarr:latest
-    restart: unless-stopped
     ports:
       - "8989:8989"
     networks:
@@ -85,13 +91,13 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/servarr/sonarr:/config
+      - /data/configs/sonarr:/config
       - /data:/data
+    restart: unless-stopped
     
   lidarr:
     container_name: lidarr
     image: lscr.io/linuxserver/lidarr:latest
-    restart: unless-stopped
     ports:
       - "8686:8686"
     networks:
@@ -103,13 +109,13 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/servarr/lidarr:/config
+      - /data/configs/lidarr:/config
       - /data:/data
+    restart: unless-stopped
   
   whisparr:
     container_name: whisparr
     image: ghcr.io/hotio/whisparr
-    restart: unless-stopped
     ports:
       - "6969:6969"
     networks:
@@ -121,13 +127,13 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/servarr/whisparr:/config
+      - /data/configs/whisparr:/config
       - /data:/data
+    restart: unless-stopped
       
   bazarr:
     container_name: bazarr
     image: lscr.io/linuxserver/bazarr:latest
-    restart: unless-stopped
     ports:
       - "6767:6767"
     networks:
@@ -139,27 +145,27 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/servarr/bazarr:/config
+      - /data/configs/bazarr:/config
       - /data:/data
+    restart: unless-stopped
 
   notifiarr:
     container_name: notifiarr
     image: golift/notifiarr
-    restart: unless-stopped
     ports:
       - "5454:5454"
     networks:
       servarr_default:
         ipv4_address: 172.39.0.9
     volumes:
-      - /etc/servarr/notifiarr:/config
+      - /data/configs/notifiarr:/config
       - /var/run/utmp:/var/run/utmp
       - /etc/machine-id:/etc/machine-id
+    restart: unless-stopped
 
   syncthing:
     container_name: syncthing
     image: lscr.io/linuxserver/syncthing:latest
-    restart: unless-stopped
     ports:
       - 8384:8384
       - 22000:22000/tcp
@@ -174,25 +180,26 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/servarr/syncthing:/config
+      - /data/configs/syncthing:/config
       - /data:/data
+    restart: unless-stopped
 
   prowlarr:
     container_name: prowlarr
     image: lscr.io/linuxserver/prowlarr:latest
-    restart: unless-stopped
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/servarr/prowlarr:/config
+      - /data/configs/prowlarr:/config
     depends_on:
       gluetun:
         condition: service_healthy
         restart: true
     network_mode: service:gluetun
+    restart: unless-stopped
 
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
@@ -203,11 +210,11 @@ services:
       - UMASK=002
       - TZ=${TZ}
     volumes:
-      - /etc/servarr/sabnzbd:/config
+      - /data/configs/sabnzbd:/config
       - /data:/data
     depends_on:
       gluetun:
         condition: service_healthy
         restart: true
-    restart: unless-stopped
     network_mode: service:gluetun
+    restart: unless-stopped
