@@ -79,7 +79,6 @@ services:
       - homepage.widget.type=radarr
       - homepage.widget.url=http://radarr.local:7878/
       - homepage.widget.key=${RADARR_API_KEY}
-      - homepage.widget.fields=["wanted","missing"]
     
   sonarr:
     container_name: sonarr
@@ -98,6 +97,16 @@ services:
       - /etc/docker/servarr/sonarr:/config
       - /data:/data
     restart: unless-stopped
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Sonarr
+      - homepage.id=col-medium__sonarr
+      - homepage.icon=sonarr
+      - homepage.href=http://sonarr.local:8989/
+      - homepage.weight=0
+      - homepage.widget.type=sonarr
+      - homepage.widget.url=http://sonarr.local:8989/
+      - homepage.widget.key=6207af5e3c514b91b5c2dcbdf887197f
     
   lidarr:
     container_name: lidarr
