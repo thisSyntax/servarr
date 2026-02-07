@@ -74,10 +74,10 @@ services:
       - homepage.name=Radarr
       - homepage.id=col-medium__radarr
       - homepage.icon=radarr
-      - homepage.href=http://radarr.local:7878
+      - homepage.href=${RADARR_IP_URL}
       - homepage.weight=0
       - homepage.widget.type=radarr
-      - homepage.widget.url=http://radarr.local:7878
+      - homepage.widget.url=${RADARR_IP_URL}
       - homepage.widget.key=${RADARR_API_KEY}
     
   sonarr:
@@ -102,10 +102,10 @@ services:
       - homepage.name=Sonarr
       - homepage.id=col-medium__sonarr
       - homepage.icon=sonarr
-      - homepage.href=http://sonarr.local:8989
+      - homepage.href=${SONARR_IP_URL}
       - homepage.weight=1
       - homepage.widget.type=sonarr
-      - homepage.widget.url=http://sonarr.local:8989
+      - homepage.widget.url=${SONARR_IP_URL}
       - homepage.widget.key=${SONARR_API_KEY}
     
   lidarr:
