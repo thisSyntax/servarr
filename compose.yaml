@@ -76,6 +76,10 @@ services:
       - homepage.icon=radarr
       - homepage.href=http://radarr.local:7878/
       - homepage.weight=0
+      - homepage.widget.type=radarr
+      - homepage.widget.url=http://radarr.local:7878/
+      - homepage.widget.key={{HOMEPAGE_VAR_RADARR_API_KEY}}
+      - homepage.widget.fields=["wanted","missing"]
     
   sonarr:
     container_name: sonarr
