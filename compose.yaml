@@ -125,24 +125,16 @@ services:
       - /etc/docker/servarr/lidarr:/config
       - /data:/data
     restart: unless-stopped
-  
-  whisparr:
-    container_name: whisparr
-    image: ghcr.io/hotio/whisparr
-    ports:
-      - "6969:6969"
-    networks:
-      servarr_default:
-        ipv4_address: 172.39.0.7
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - UMASK=002
-      - TZ=${TZ}
-    volumes:
-      - /etc/docker/servarr/whisparr:/config
-      - /data:/data
-    restart: unless-stopped
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Lidarr
+      - homepage.id=col-medium__lidarr
+      - homepage.icon=lidarr
+      - homepage.href=${LIDARR_IP_URL}
+      - homepage.weight=2
+      - homepage.widget.type=lidarr
+      - homepage.widget.url=${LIDARR_IP_URL}
+      - homepage.widget.key=${LIDARR_API_KEY}
       
   bazarr:
     container_name: bazarr
@@ -159,6 +151,34 @@ services:
       - TZ=${TZ}
     volumes:
       - /etc/docker/servarr/bazarr:/config
+      - /data:/data
+    restart: unless-stopped
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Bazarr
+      - homepage.id=col-medium__bazarr
+      - homepage.icon=bazarr
+      - homepage.href=${BAZARR_IP_URL}
+      - homepage.weight=3
+      - homepage.widget.type=bazarr
+      - homepage.widget.url=${BAZARR_IP_URL}
+      - homepage.widget.key=${BAZARR_API_KEY}
+
+  whisparr:
+    container_name: whisparr
+    image: ghcr.io/hotio/whisparr
+    ports:
+      - "6969:6969"
+    networks:
+      servarr_default:
+        ipv4_address: 172.39.0.7
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+    volumes:
+      - /etc/docker/servarr/whisparr:/config
       - /data:/data
     restart: unless-stopped
 
