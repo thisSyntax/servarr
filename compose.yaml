@@ -53,7 +53,6 @@ services:
     labels:
       - homepage.group=Main
       - homepage.name=Jellyseerr
-      - homepage.id=col-1-2__jellyseerr
       - homepage.icon=jellyseerr
       - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:5055
       - homepage.weight=4
@@ -82,7 +81,6 @@ services:
     labels:
       - homepage.group=Media Management
       - homepage.name=Radarr
-      - homepage.id=col-1-2__radarr
       - homepage.icon=radarr
       - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:7878
       - homepage.weight=0
@@ -110,7 +108,6 @@ services:
     labels:
       - homepage.group=Media Management
       - homepage.name=Sonarr
-      - homepage.id=col-1-2__sonarr
       - homepage.icon=sonarr
       - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:8989
       - homepage.weight=1
@@ -138,7 +135,6 @@ services:
     labels:
       - homepage.group=Media Management
       - homepage.name=Lidarr
-      - homepage.id=col-1-2__lidarr
       - homepage.icon=lidarr
       - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:8686
       - homepage.weight=2
@@ -166,7 +162,6 @@ services:
     labels:
       - homepage.group=Media Management
       - homepage.name=Bazarr
-      - homepage.id=col-1-2__bazarr
       - homepage.icon=bazarr
       - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:6767
       - homepage.weight=3
