@@ -156,6 +156,16 @@ services:
       - /opt/docker/servarr/config/whisparr:/config
       - /data:/data
     restart: unless-stopped
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Whisparr
+      - homepage.id=col-2__whisparr
+      - homepage.icon=whisparr
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6969
+      - homepage.weight=4
+      - homepage.widget.type=whisparr
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6969
+      - homepage.widget.key={{HOMEPAGE_VAR_WHISPARR_API_KEY}}
 
   notifiarr:
     container_name: notifiarr
@@ -170,6 +180,17 @@ services:
       - /var/run/utmp:/var/run/utmp
       - /etc/machine-id:/etc/machine-id
     restart: unless-stopped
+    labels:
+      - homepage.group=Tools
+      - homepage.name=Notifiarr
+      - homepage.id=col-2__notifiarr
+      - homepage.icon=notifiarr
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:5454
+      - homepage.weight=0
+      - homepage.widget.type=notifiarr
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:5454
+      - homepage.widget.key={{HOMEPAGE_VAR_NOTIFIARR_API_KEY}}
+
 
   syncthing:
     container_name: syncthing
@@ -191,6 +212,17 @@ services:
       - /opt/docker/servarr/config/syncthing:/config
       - /data:/data
     restart: unless-stopped
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Syncthing
+      - homepage.id=col-2__syncthing
+      - homepage.icon=syncthing
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8384
+      - homepage.weight=7
+      - homepage.widget.type=syncthing
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8384
+      - homepage.widget.key={{HOMEPAGE_VAR_SYNCTHING_API_KEY}}
+    
 
   prowlarr:
     container_name: prowlarr
@@ -208,6 +240,17 @@ services:
         restart: true
     network_mode: service:gluetun
     restart: unless-stopped
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Prowlarr
+      - homepage.id=col-2__prowlarr
+      - homepage.icon=prowlarr
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9696
+      - homepage.weight=5
+      - homepage.widget.type=prowlarr
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9696
+      - homepage.widget.key={{HOMEPAGE_VAR_PROWLARR_API_KEY}}
+
 
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
@@ -226,3 +269,13 @@ services:
         restart: true
     network_mode: service:gluetun
     restart: unless-stopped
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=SABnzbd
+      - homepage.id=col-2__sabnzbd
+      - homepage.icon=sabnzbd
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8080
+      - homepage.weight=4
+      - homepage.widget.type=sabnzbd
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8080
+      - homepage.widget.key={{HOMEPAGE_VAR_SABNZBD_API_KEY}}
