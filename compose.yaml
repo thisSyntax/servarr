@@ -111,34 +111,6 @@ services:
       - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8686
       - homepage.widget.key={{HOMEPAGE_VAR_LIDARR_API_KEY}}
 
-  whisparr:
-    container_name: whisparr
-    image: ghcr.io/hotio/whisparr
-    ports:
-      - "6969:6969"
-    networks:
-      servarr_default:
-        ipv4_address: 172.39.0.7
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - UMASK=002
-      - TZ=${TZ}
-    volumes:
-      - /opt/docker/servarr/config/whisparr:/config
-      - /data:/data
-    restart: unless-stopped
-    labels:
-      - homepage.group=Media Management
-      - homepage.name=Whisparr
-      - homepage.id=col-2__whisparr
-      - homepage.icon=whisparr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6969
-      - homepage.weight=3
-      - homepage.widget.type=whisparr
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6969
-      - homepage.widget.key={{HOMEPAGE_VAR_WHISPARR_API_KEY}}
-
   bazarr:
     container_name: bazarr
     image: lscr.io/linuxserver/bazarr:latest
@@ -162,7 +134,7 @@ services:
       - homepage.id=col-2__bazarr
       - homepage.icon=bazarr
       - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
-      - homepage.weight=4
+      - homepage.weight=3
       - homepage.widget.type=bazarr
       - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
       - homepage.widget.key={{HOMEPAGE_VAR_BAZARR_API_KEY}}
@@ -189,10 +161,37 @@ services:
       - homepage.id=col-2__prowlarr
       - homepage.icon=prowlarr
       - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9696
-      - homepage.weight=6
+      - homepage.weight=4
       - homepage.widget.type=prowlarr
       - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9696
       - homepage.widget.key={{HOMEPAGE_VAR_PROWLARR_API_KEY}}
+
+  huntarr:
+    container_name: huntarr
+    image: ghcr.io/plexguide/huntarr:latest
+    ports:
+      - "6767:6767"
+    networks:
+      servarr_default:
+        ipv4_address: 172.39.0.11
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+    volumes:
+      - /opt/docker/servarr/config/huntarr:/config
+    restart: unless-stopped
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Huntarr
+      - homepage.id=col-2__huntarr
+      - homepage.icon=huntarr
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
+      - homepage.weight=5
+      - homepage.widget.type=huntarr
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
+      - homepage.widget.key={{HOMEPAGE_VAR_HUNTARR_API_KEY}}
 
   syncthing:
     container_name: syncthing
@@ -273,6 +272,28 @@ services:
       - homepage.icon=notifiarr
       - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:5454
       - homepage.weight=0
-      - homepage.widget.type=notifiarr
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:5454
-      - homepage.widget.key={{HOMEPAGE_VAR_NOTIFIARR_API_KEY}}
+
+    whisparr:
+    container_name: whisparr
+    image: ghcr.io/hotio/whisparr
+    ports:
+      - "6969:6969"
+    networks:
+      servarr_default:
+        ipv4_address: 172.39.0.7
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+    volumes:
+      - /opt/docker/servarr/config/whisparr:/config
+      - /data:/data
+    restart: unless-stopped
+    labels:
+      - homepage.group=Tools
+      - homepage.name=Whisparr
+      - homepage.id=col-2__whisparr
+      - homepage.icon=whisparr
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6969
+      - homepage.weight=2
