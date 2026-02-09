@@ -170,7 +170,7 @@ services:
     container_name: huntarr
     image: ghcr.io/plexguide/huntarr:latest
     ports:
-      - "6767:6767"
+      - "9705:9705"
     networks:
       servarr_default:
         ipv4_address: 172.39.0.11
@@ -187,10 +187,10 @@ services:
       - homepage.name=Huntarr
       - homepage.id=col-2__huntarr
       - homepage.icon=huntarr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9705
       - homepage.weight=5
       - homepage.widget.type=huntarr
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9705
       - homepage.widget.key={{HOMEPAGE_VAR_HUNTARR_API_KEY}}
 
   syncthing:
