@@ -220,9 +220,6 @@ services:
       - homepage.icon=syncthing
       - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8384
       - homepage.weight=7
-      - homepage.widget.type=syncthing
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8384
-      - homepage.widget.key={{HOMEPAGE_VAR_SYNCTHING_API_KEY}}
 
   sabnzbd:
     container_name: sabnzbd
@@ -275,7 +272,7 @@ services:
 
   whisparr:
     container_name: whisparr
-    image: ghcr.io/hotio/whisparr
+    image: ghcr.io/hotio/whisparr:v3
     ports:
       - "6969:6969"
     networks:
