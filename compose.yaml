@@ -44,16 +44,6 @@ services:
       - /opt/docker/servarr/config/radarr:/config
       - /data:/data
     restart: unless-stopped
-    labels:
-      - homepage.group=Media Management
-      - homepage.name=Radarr
-      - homepage.id=col-2__radarr
-      - homepage.icon=radarr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:7878
-      - homepage.weight=0
-      - homepage.widget.type=radarr
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:7878
-      - homepage.widget.key={{HOMEPAGE_VAR_RADARR_API_KEY}}
     
   sonarr:
     container_name: sonarr
@@ -72,16 +62,6 @@ services:
       - /opt/docker/servarr/config/sonarr:/config
       - /data:/data
     restart: unless-stopped
-    labels:
-      - homepage.group=Media Management
-      - homepage.name=Sonarr
-      - homepage.id=col-2__sonarr
-      - homepage.icon=sonarr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8989
-      - homepage.weight=1
-      - homepage.widget.type=sonarr
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8989
-      - homepage.widget.key={{HOMEPAGE_VAR_SONARR_API_KEY}}
     
   lidarr:
     container_name: lidarr
@@ -100,16 +80,6 @@ services:
       - /opt/docker/servarr/config/lidarr:/config
       - /data:/data
     restart: unless-stopped
-    labels:
-      - homepage.group=Media Management
-      - homepage.name=Lidarr
-      - homepage.id=col-2__lidarr
-      - homepage.icon=lidarr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8686
-      - homepage.weight=2
-      - homepage.widget.type=lidarr
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8686
-      - homepage.widget.key={{HOMEPAGE_VAR_LIDARR_API_KEY}}
 
   bazarr:
     container_name: bazarr
@@ -128,119 +98,6 @@ services:
       - /opt/docker/servarr/config/bazarr:/config
       - /data:/data
     restart: unless-stopped
-    labels:
-      - homepage.group=Media Management
-      - homepage.name=Bazarr
-      - homepage.id=col-2__bazarr
-      - homepage.icon=bazarr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
-      - homepage.weight=3
-      - homepage.widget.type=bazarr
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
-      - homepage.widget.key={{HOMEPAGE_VAR_BAZARR_API_KEY}}
-
-  prowlarr:
-    container_name: prowlarr
-    image: lscr.io/linuxserver/prowlarr:latest
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - UMASK=002
-      - TZ=${TZ}
-    volumes:
-      - /opt/docker/servarr/config/prowlarr:/config
-    depends_on:
-      gluetun:
-        condition: service_healthy
-        restart: true
-    network_mode: service:gluetun
-    restart: unless-stopped
-    labels:
-      - homepage.group=Media Management
-      - homepage.name=Prowlarr
-      - homepage.id=col-2__prowlarr
-      - homepage.icon=prowlarr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9696
-      - homepage.weight=4
-      - homepage.widget.type=prowlarr
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9696
-      - homepage.widget.key={{HOMEPAGE_VAR_PROWLARR_API_KEY}}
-
-  huntarr:
-    container_name: huntarr
-    image: ghcr.io/plexguide/huntarr:latest
-    ports:
-      - "9705:9705"
-    networks:
-      servarr_default:
-        ipv4_address: 172.39.0.11
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - UMASK=002
-      - TZ=${TZ}
-    volumes:
-      - /opt/docker/servarr/config/huntarr:/config
-    restart: unless-stopped
-    labels:
-      - homepage.group=Media Management
-      - homepage.name=Huntarr
-      - homepage.id=col-2__huntarr
-      - homepage.icon=huntarr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9705
-      - homepage.weight=5
-      - homepage.widget.type=huntarr
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9705
-      - homepage.widget.key={{HOMEPAGE_VAR_HUNTARR_API_KEY}}
-
-  sabnzbd:
-    container_name: sabnzbd
-    image: lscr.io/linuxserver/sabnzbd:latest
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - UMASK=002
-      - TZ=${TZ}
-    volumes:
-      - /opt/docker/servarr/config/sabnzbd:/config
-      - /data:/data
-    depends_on:
-      gluetun:
-        condition: service_healthy
-        restart: true
-    network_mode: service:gluetun
-    restart: unless-stopped
-    labels:
-      - homepage.group=Media Management
-      - homepage.name=SABnzbd
-      - homepage.id=col-2__sabnzbd
-      - homepage.icon=sabnzbd
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8080
-      - homepage.weight=8
-      - homepage.widget.type=sabnzbd
-      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8080
-      - homepage.widget.key={{HOMEPAGE_VAR_SABNZBD_API_KEY}}
-
-  notifiarr:
-    container_name: notifiarr
-    image: golift/notifiarr
-    ports:
-      - "5454:5454"
-    networks:
-      servarr_default:
-        ipv4_address: 172.39.0.9
-    volumes:
-      - /opt/docker/servarr/config/notifiarr:/config
-      - /var/run/utmp:/var/run/utmp
-      - /etc/machine-id:/etc/machine-id
-    restart: unless-stopped
-    labels:
-      - homepage.group=Tools
-      - homepage.name=Notifiarr
-      - homepage.id=col-2__notifiarr
-      - homepage.icon=notifiarr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:5454
-      - homepage.weight=0
 
   whisparr:
     container_name: whisparr
@@ -259,13 +116,72 @@ services:
       - /opt/docker/servarr/config/whisparr:/config
       - /data:/data
     restart: unless-stopped
-    labels:
-      - homepage.group=Tools
-      - homepage.name=Whisparr
-      - homepage.id=col-2__whisparr
-      - homepage.icon=whisparr
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6969
-      - homepage.weight=2
+
+  prowlarr:
+    container_name: prowlarr
+    image: lscr.io/linuxserver/prowlarr:latest
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+    volumes:
+      - /opt/docker/servarr/config/prowlarr:/config
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    network_mode: service:gluetun
+    restart: unless-stopped
+
+  sabnzbd:
+    container_name: sabnzbd
+    image: lscr.io/linuxserver/sabnzbd:latest
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+    volumes:
+      - /opt/docker/servarr/config/sabnzbd:/config
+      - /data:/data
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    network_mode: service:gluetun
+    restart: unless-stopped
+
+  notifiarr:
+    container_name: notifiarr
+    image: golift/notifiarr
+    ports:
+      - "5454:5454"
+    networks:
+      servarr_default:
+        ipv4_address: 172.39.0.9
+    volumes:
+      - /opt/docker/servarr/config/notifiarr:/config
+      - /var/run/utmp:/var/run/utmp
+      - /etc/machine-id:/etc/machine-id
+    restart: unless-stopped
+
+  huntarr:
+    container_name: huntarr
+    image: ghcr.io/plexguide/huntarr:latest
+    ports:
+      - "9705:9705"
+    networks:
+      servarr_default:
+        ipv4_address: 172.39.0.11
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+    volumes:
+      - /opt/docker/servarr/config/huntarr:/config
+    restart: unless-stopped
 
   syncthing:
     container_name: syncthing
@@ -287,10 +203,3 @@ services:
       - /opt/docker/servarr/config/syncthing:/config
       - /data:/data
     restart: unless-stopped
-    labels:
-      - homepage.group=Tools
-      - homepage.name=Syncthing
-      - homepage.id=col-2__syncthing
-      - homepage.icon=syncthing
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8384
-      - homepage.weight=3
