@@ -25,41 +25,7 @@ services:
       - .env
     environment:
       - DNS_ADDRESS=127.0.0.11
-    restart: unless-stopped
-
-  jellyseerr:
-    container_name: jellyseerr
-    image: ghcr.io/fallenbagel/jellyseerr:latest
-    init: true
-    ports:
-      - 5055:5055
-    networks:
-      servarr_default:
-        ipv4_address: 172.39.0.3
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - UMASK=002
-      - TZ=${TZ}
-    volumes:
-      - /opt/docker/servarr/config/jellyseerr:/app/config
-    healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
-      start_period: 20s
-      timeout: 3s
-      interval: 15s
-      retries: 3
-    restart: unless-stopped
-    labels:
-      - homepage.group=Main
-      - homepage.name=Jellyseerr
-      - homepage.icon=jellyseerr
-      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:5055
-      - homepage.weight=4
-      - homepage.widget.type=jellyseerr
-      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:5055
-      - homepage.widget.key={{HOMEPAGE_VAR_JELLYSEERR_API_KEY}}
-    
+    restart: unless-stopped    
   
   radarr:
     container_name: radarr
