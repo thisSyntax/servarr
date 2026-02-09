@@ -193,34 +193,6 @@ services:
       - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:9705
       - homepage.widget.key={{HOMEPAGE_VAR_HUNTARR_API_KEY}}
 
-  syncthing:
-    container_name: syncthing
-    image: lscr.io/linuxserver/syncthing:latest
-    ports:
-      - 8384:8384
-      - 22000:22000/tcp
-      - 22000:22000/udp
-      - 21027:21027/udp
-    networks:
-      servarr_default:
-        ipv4_address: 172.39.0.10
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - UMASK=002
-      - TZ=${TZ}
-    volumes:
-      - /opt/docker/servarr/config/syncthing:/config
-      - /data:/data
-    restart: unless-stopped
-    labels:
-      - homepage.group=Media Management
-      - homepage.name=Syncthing
-      - homepage.id=col-2__syncthing
-      - homepage.icon=syncthing
-      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8384
-      - homepage.weight=7
-
   sabnzbd:
     container_name: sabnzbd
     image: lscr.io/linuxserver/sabnzbd:latest
@@ -294,3 +266,31 @@ services:
       - homepage.icon=whisparr
       - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6969
       - homepage.weight=2
+
+  syncthing:
+    container_name: syncthing
+    image: lscr.io/linuxserver/syncthing:latest
+    ports:
+      - 8384:8384
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    networks:
+      servarr_default:
+        ipv4_address: 172.39.0.10
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+    volumes:
+      - /opt/docker/servarr/config/syncthing:/config
+      - /data:/data
+    restart: unless-stopped
+    labels:
+      - homepage.group=Tools
+      - homepage.name=Syncthing
+      - homepage.id=col-2__syncthing
+      - homepage.icon=syncthing
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8384
+      - homepage.weight=3
