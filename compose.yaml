@@ -42,7 +42,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/radarr:/config
-      - /data:/data
+      - /mnt/data:/data
     restart: unless-stopped
     
   sonarr:
@@ -60,7 +60,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/sonarr:/config
-      - /data:/data
+      - /mnt/data:/data
     restart: unless-stopped
     
   lidarr:
@@ -78,7 +78,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/lidarr:/config
-      - /data:/data
+      - /mnt/data:/data
     restart: unless-stopped
 
   bazarr:
@@ -96,7 +96,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/bazarr:/config
-      - /data:/data
+      - /mnt/data:/data
     restart: unless-stopped
 
   whisparr:
@@ -114,7 +114,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/whisparr:/config
-      - /data:/data
+      - /mnt/data:/data
     restart: unless-stopped
 
   prowlarr:
@@ -144,7 +144,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/sabnzbd:/config
-      - /data:/data
+      - /mnt/data:/data
     depends_on:
       gluetun:
         condition: service_healthy
@@ -201,5 +201,5 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/syncthing:/config
-      - /data:/data
+      - /mnt/data:/data
     restart: unless-stopped
