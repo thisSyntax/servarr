@@ -225,8 +225,8 @@ services:
       - homepage.widget.key={{HOMEPAGE_VAR_SYNCTHING_API_KEY}}
 
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:latest
     container_name: sabnzbd
+    image: lscr.io/linuxserver/sabnzbd:latest
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -273,7 +273,7 @@ services:
       - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:5454
       - homepage.weight=0
 
-    whisparr:
+  whisparr:
     container_name: whisparr
     image: ghcr.io/hotio/whisparr
     ports:
