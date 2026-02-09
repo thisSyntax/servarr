@@ -48,10 +48,10 @@ services:
       - homepage.group=Media Management
       - homepage.name=Radarr
       - homepage.icon=radarr
-      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:7878
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:7878
       - homepage.weight=0
       - homepage.widget.type=radarr
-      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:7878
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:7878
       - homepage.widget.key={{HOMEPAGE_VAR_RADARR_API_KEY}}
     
   sonarr:
@@ -75,10 +75,10 @@ services:
       - homepage.group=Media Management
       - homepage.name=Sonarr
       - homepage.icon=sonarr
-      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:8989
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8989
       - homepage.weight=1
       - homepage.widget.type=sonarr
-      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:8989
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8989
       - homepage.widget.key={{HOMEPAGE_VAR_SONARR_API_KEY}}
     
   lidarr:
@@ -102,10 +102,10 @@ services:
       - homepage.group=Media Management
       - homepage.name=Lidarr
       - homepage.icon=lidarr
-      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:8686
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8686
       - homepage.weight=2
       - homepage.widget.type=lidarr
-      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:8686
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:8686
       - homepage.widget.key={{HOMEPAGE_VAR_LIDARR_API_KEY}}
       
   bazarr:
@@ -129,10 +129,10 @@ services:
       - homepage.group=Media Management
       - homepage.name=Bazarr
       - homepage.icon=bazarr
-      - homepage.href={{HOMEPAGE_VAR_SERVARR_IP}}:6767
+      - homepage.href={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
       - homepage.weight=3
       - homepage.widget.type=bazarr
-      - homepage.widget.url={{HOMEPAGE_VAR_SERVARR_IP}}:6767
+      - homepage.widget.url={{HOMEPAGE_VAR_DOCKER-MEDIA_IP}}:6767
       - homepage.widget.key={{HOMEPAGE_VAR_BAZARR_API_KEY}}
 
   whisparr:
