@@ -1,10 +1,4 @@
-networks:
-  servarr_default:
-    name: servarr_default
-    ipam:
-      config:
-        - subnet: 172.39.0.0/24
-        
+
 services:
   gluetun:
     container_name: gluetun
@@ -42,7 +36,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/radarr:/config
-      - /data:/data
+      - data:/data
     restart: unless-stopped
     
   sonarr:
@@ -60,7 +54,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/sonarr:/config
-      - /data:/data
+      - data:/data
     restart: unless-stopped
     
   lidarr:
@@ -78,7 +72,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/lidarr:/config
-      - /data:/data
+      - data:/data
     restart: unless-stopped
 
   bazarr:
@@ -96,7 +90,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/bazarr:/config
-      - /data:/data
+      - data:/data
     restart: unless-stopped
 
   whisparr:
@@ -114,7 +108,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/whisparr:/config
-      - /data:/data
+      - data:/data
     restart: unless-stopped
 
   prowlarr:
@@ -144,7 +138,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/sabnzbd:/config
-      - /data:/data
+      - data:/data
     depends_on:
       gluetun:
         condition: service_healthy
@@ -201,5 +195,19 @@ services:
       - TZ=${TZ}
     volumes:
       - /opt/docker/servarr/config/syncthing:/config
-      - /data:/data
+      - data:/data
     restart: unless-stopped
+
+networks:
+  servarr_default:
+    name: servarr_default
+    ipam:
+      config:
+        - subnet: 172.39.0.0/24
+
+volumes:
+  data:
+    driver_opts:
+      type: nfs
+      o: "addr=${NAS_IP},rw,nfsvers=4"}"
+      device: :/volume1/data
