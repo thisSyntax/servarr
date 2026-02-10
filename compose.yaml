@@ -209,5 +209,5 @@ volumes:
   data:
     driver_opts:
       type: nfs
-      o: "addr=${NAS_IP},rw,nfsvers=4"}"
+      o: "addr=${NAS_IP},rw,nfsvers=4"
       device: :/volume1/data
