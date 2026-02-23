@@ -160,23 +160,6 @@ services:
       - /etc/machine-id:/etc/machine-id
     restart: unless-stopped
 
-  huntarr:
-    container_name: huntarr
-    image: ghcr.io/plexguide/huntarr:latest
-    ports:
-      - "9705:9705"
-    networks:
-      servarr_default:
-        ipv4_address: 172.39.0.11
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - UMASK=002
-      - TZ=${TZ}
-    volumes:
-      - /opt/docker/servarr/config/huntarr:/config
-    restart: unless-stopped
-
   syncthing:
     container_name: syncthing
     image: lscr.io/linuxserver/syncthing:latest
